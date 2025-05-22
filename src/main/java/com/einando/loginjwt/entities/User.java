@@ -1,5 +1,6 @@
 package com.einando.loginjwt.entities;
 
+import com.einando.loginjwt.dtos.UserDTORequest;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,4 +23,11 @@ public class User {
     private String name;
     private String email;
     private String password;
+
+    public User(UserDTORequest dto){
+        this.id = UUID.randomUUID();
+        this.name = dto.name();
+        this.email = dto.email();
+        this.password = dto.password();
+    }
 }
